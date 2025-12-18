@@ -1,4 +1,3 @@
-@'
 # ContosoWeb – ASP.NET Core Web API
 
 ## 📌 Overview
