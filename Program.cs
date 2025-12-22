@@ -15,6 +15,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Endpoint raíz (evita 404 y confirma que la API está viva)
+app.MapGet("/", () => Results.Ok("ContosoWeb API is running"));
+
+// Health check (clave para Docker, CI, Kubernetes, Azure, etc.)
+app.MapGet("/api/health", () =>
+    Results.Ok(new { status = "Healthy" })
+);
+
+// Endpoint de ejemplo (WeatherForecast)
 app.MapGet("/weatherforecast", () =>
 {
     var summaries = new[]
